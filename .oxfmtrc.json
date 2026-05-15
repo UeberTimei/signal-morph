@@ -1,0 +1,20 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "printWidth": 120,
+  "tabWidth": 2,
+  "useTabs": false,
+  "semi": true,
+  "singleQuote": true,
+  "trailingComma": "all",
+  "sortImports": {
+    "newlinesBetween": true,
+    "groups": ["type", "angular", "builtin", "external", "internal", ["parent", "sibling", "index"], "unknown"],
+    "customGroups": [
+      {
+        "groupName": "angular",
+        "elementNamePattern": ["@angular/"]
+      }
+    ]
+  },
+  "ignorePatterns": ["*", "!projects/**"]
+}
