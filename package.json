@@ -12,6 +12,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "test:ui": "ng test --ui",
     "lint": "oxlint projects/",
     "lint:fix": "oxlint projects/ --fix",
     "format": "oxfmt projects/ --write",
