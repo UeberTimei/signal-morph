@@ -1,11 +1,37 @@
 {
   "name": "signal-morph",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.1.1",
+  "private": false,
+  "main": "./dist/signal-morph/public-api.mjs",
+  "module": "./dist/signal-morph/public-api.mjs",
+  "types": "./dist/signal-morph/public-api.d.mts",
+  "exports": {
+    ".": {
+      "types": "./dist/signal-morph/public-api.d.mts",
+      "import": "./dist/signal-morph/public-api.mjs"
+    }
+  },
+  "files": [
+    "dist/signal-morph",
+    "README.md",
+    "LICENSE"
+  ],
   "engines": {
     "node": ">=22.12.0",
     "bun": ">=1.3.9"
   },
+  "repository": "https://github.com/UeberTimei/signal-morph",
+  "author": "UeberTimei",
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "signals",
+    "reactivity",
+    "morph",
+    "pipe",
+    "operators",
+    "unix"
+  ],
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
