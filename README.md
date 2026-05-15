@@ -1,59 +1,81 @@
-# SignalMorph
+# 🧪 signal-morph
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.6.
+Lightweight, UNIX-way utilities for transforming Angular Signals.
 
-## Development server
+[![npm version](https://badge.fury.io/js/signal-morph.svg)](https://badge.fury.io/js/signal-morph)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-To start a local development server, run:
+## 📋 Philosophy
 
-```bash
-ng serve
-```
+1.  **Do one thing well**: Each operator performs a single, specific task.
+2.  **Composability**: Combine operators into powerful pipelines using `morph`.
+3.  **Tree-shakeable**: Zero classes, zero monolithic services. Only pure functions.
+4.  **Zero Dependencies**: Uses only `@angular/core`. No RxJS or Lodash required.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 🚀 Installation
 
 ```bash
-ng generate component component-name
+bun add signal-morph
+# or
+npm install signal-morph
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 📖 Quick Start
 
-```bash
-ng generate --help
+```typescript
+import { signal } from '@angular/core';
+import { morph, mapSignal, filterSignal } from 'signal-morph';
+
+const count = signal(0);
+
+// Create a reactive pipeline
+const doubleEven = morph(
+  count,
+  filterSignal(n => n % 2 === 0),
+  mapSignal(n => n * 2)
+);
+
+console.log(doubleEven()); // 0
+count.set(1);
+console.log(doubleEven()); // 0 (filtered)
+count.set(2);
+console.log(doubleEven()); // 4
 ```
 
-## Building
+## 🛠 Operators
 
-To build the project run:
+### `morph(source, ...operators)`
+The core pipeline function. Takes a source signal and applies operators sequentially.
 
-```bash
-ng build
+### `mapSignal(project)`
+Transforms the value using a projection function.
+```typescript
+mapSignal(v => v.toUpperCase())
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
+### `filterSignal(predicate)`
+Only propagates values that satisfy the condition. Keeps the last valid value.
+```typescript
+filterSignal(n => n > 0)
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
+### `tapSignal(callback)`
+Performs side effects (logging, analytics) without modifying the signal.
+```typescript
+tapSignal(v => console.log('Value changed:', v))
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+### `distinctSignal(comparator?)`
+Skips updates if the new value is equal to the old one.
+```typescript
+distinctSignal((a, b) => a.id === b.id)
+```
 
-## Additional Resources
+### `debounceSignal(timeMs)`
+Delays propagation until a period of silence.
+```typescript
+debounceSignal(300)
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## 📄 License
+MIT © 2024
