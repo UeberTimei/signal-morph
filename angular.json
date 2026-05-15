@@ -6,5 +6,31 @@
   },
   "newProjectRoot": "projects",
   "projects": {
+    "signal-morph": {
+      "projectType": "library",
+      "root": "projects/signal-morph",
+      "sourceRoot": "projects/signal-morph/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/signal-morph/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/signal-morph/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "projects/signal-morph/tsconfig.spec.json"
+          }
+        }
+      }
+    }
   }
 }
