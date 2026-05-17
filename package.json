@@ -24,6 +24,10 @@
     "type": "git",
     "url": "git+https://github.com/UeberTimei/signal-morph.git"
   },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
   "author": "UeberTimei",
   "license": "MIT",
   "keywords": [
