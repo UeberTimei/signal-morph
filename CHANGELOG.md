@@ -1,5 +1,11 @@
 # signal-morph
 
+## 0.1.2
+
+### Patch Changes
+
+- 8690fdd: Made CI/CD in GitHub
+
 ## 0.1.1
 
 ### Patch Changes
