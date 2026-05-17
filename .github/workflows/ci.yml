@@ -37,6 +37,7 @@ jobs:
     name: Release & Publish
     needs: test-and-build
     if: github.repository == 'UeberTimei/signal-morph' && github.event_name == 'push' && github.ref == 'refs/heads/main'
+    environment: npm
     runs-on: ubuntu-latest
     permissions:
       contents: write
