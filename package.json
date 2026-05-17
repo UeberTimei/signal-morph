@@ -20,7 +20,10 @@
     "node": ">=22.12.0",
     "bun": ">=1.3.9"
   },
-  "repository": "https://github.com/UeberTimei/signal-morph",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UeberTimei/signal-morph.git"
+  },
   "author": "UeberTimei",
   "license": "MIT",
   "keywords": [
